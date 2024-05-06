@@ -30,9 +30,6 @@ convo = model.start_chat(history=[
 ])
 
 
-
-
-
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
@@ -53,15 +50,9 @@ def convert():
     except pint.UndefinedUnitError:
         return jsonify({'result': 'Invalid unit'})
     
-
-
-
-
-
     
 #convo.send_message("write me a story about monkeys")
 #print(convo.last.text)
-
 
 @app.route('/Reality_check', methods=['POST'])
 def RealityCheck():
@@ -80,7 +71,5 @@ def RealityCheck():
     except Exception as e:  
         return jsonify({'result': f"Error calling Gemini API: {str(e)}"})
         
-
-
 if __name__ == '__main__':
     app.run(port=7777)
