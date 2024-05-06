@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Conversion</title>
+    <style>
+        textarea {
+            resize: both;  
+            min-height: 50px; 
+            overflow: auto;  
+        }
+    </style>
+</head>
+<body>
+    <h1>Unit Conversion</h1>
+    <div id="result"></div>
+    <script>
+        function RealityCheck() {
+            var input = document.getElementById("input").value;
+
+            fetch('http://localhost:7777/Reality_check', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ query: input })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("result").textContent = "HME's Assessment: " + data.result; 
+            })
+            .catch(error => console.error('Error:', error)); 
+        }
+
+        // Function to handle form submission
+        function convertUnits() {
+            // Get the input value
+            var input = document.getElementById("input").value;
+
+            // Send a POST request to the Flask endpoint
+            fetch('http://localhost:7777/convert_units', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ query: input })
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Update the result div with the response
+                var resultText = "<h2>Result:</h2><p>Magnitude: " + data.result.magnitude + "</p><p>Unit: " + data.result.unit + "</p>";
+                document.getElementById("result").innerHTML = resultText;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            })
+        }
+
+
+       
+    </script>
+     <label for="input">Enter your query:</label><br>
+     <textarea id="input" name="input"></textarea><br><br> 
+     <button onclick="RealityCheck()">Reality Check</button>
+     <button onclick="convertUnits()">Convert</button>
+     <button onclick="convertUnits()">Equivalent To</button>
+ </body>
+ </html>
