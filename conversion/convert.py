@@ -6,7 +6,8 @@ import google.generativeai as genai
 #For api to work you must to into your terminal and do the following:
 #pip install flask
 #pip install flask-cors
-#pip install -q -U google-generativeai
+#pip install pint
+#pip install google-generativeai
 #You also need python installed, if installed python does not work install python lastest version from microsoft store
 
 
@@ -63,7 +64,7 @@ def RealityCheck():
     try:
         
         convo.send_message(f"Is this a realistic quantity: {query}? Explain. without any formatting and no asterisks"),
-        max_tokens=50
+        max_tokens=150
         
         #gemini_explanation = response[0].text
         return jsonify({'result': convo.last.text})
