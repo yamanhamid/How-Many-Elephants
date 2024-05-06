@@ -1,0 +1,10 @@
+README.md
+
+Unit Conversion and Reality Check API
+
+This project provides a simple API for performing unit conversions and checking the realism of quantities using the Gemini language model.
+
+Features
+
+Unit Conversion: Converts between different units of measurement (e.g., meters to miles, grams to kilograms).
+Reality Check: Leverages the Gemini language model to assess if a given quantity seems plausible and provides an explanation.
