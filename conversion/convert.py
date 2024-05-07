@@ -1,7 +1,9 @@
-from flask import Flask, request, jsonify 
-from flask_cors import CORS
-import pint
-import google.generativeai as genai 
+# Import necessary libraries
+from flask import Flask, request, jsonify  # Import Flask framework for creating web applications, and modules for handling requests and JSON responses
+from flask_cors import CORS  # Import CORS module for enabling Cross-Origin Resource Sharing
+import pint  # Import the Pint library for handling physical quantities and units
+import google.generativeai as genai  # Import the GenerativeAI module from Google's library for AI-powered text generation
+
 
 #For api to work you must to into your terminal and do the following:
 #pip install flask
@@ -10,33 +12,34 @@ import google.generativeai as genai
 #pip install google-generativeai
 #You also need python installed, if installed python does not work install python lastest version from microsoft store
 
-
-
+# Configure the GenerativeAI API with your API key
 genai.configure(api_key="AIzaSyDqL4uMB8tpcrEU6xVBrH5RhX8YJAcs5xk")
 
-# Set up the model
+# Set up generation configuration for the model
 generation_config = {
-  "temperature": 1,
-  "top_p": 0.95,
-  "top_k": 0,
-  "max_output_tokens": 8192,
+  "temperature": 1,         # Controls the randomness of generation
+  "top_p": 0.95,            # Controls diversity
+  "top_k": 0,               # Controls diversity
+  "max_output_tokens": 8192 # Maximum number of tokens generated
 }
 
-
-
+# Initialize the GenerativeAI model
 model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest",
-                              generation_config=generation_config,)
+                              generation_config=generation_config)
 
-convo = model.start_chat(history=[
-])
+# Start a conversation with an empty history
+convo = model.start_chat(history=[])
 
-
+# Initialize Flask app
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
 
+# Enable Cross-Origin Resource Sharing (CORS) for all routes
+CORS(app)  
+
+# Initialize Unit Registry for unit conversion
 ureg = pint.UnitRegistry()
 
-
+# Route for unit conversion
 @app.route('/convert_units', methods=['POST'])
 def convert():
     # Get the query from the request body
@@ -51,10 +54,7 @@ def convert():
     except pint.UndefinedUnitError:
         return jsonify({'result': 'Invalid unit'})
     
-    
-#convo.send_message("write me a story about monkeys")
-#print(convo.last.text)
-
+# Route for reality check using Gemini
 @app.route('/Reality_check', methods=['POST'])
 def RealityCheck():
     data = request.get_json()
@@ -62,15 +62,13 @@ def RealityCheck():
 
     # Use Gemini for understanding and a basic reality check
     try:
-        
-        convo.send_message(f"Is this a realistic quantity: {query}? Explain. without any formatting and no asterisks"),
+        convo.send_message(f"Is the following prompt realistic?: {query}? Explain why/why not and use comparisons so the user can better understand."),
         max_tokens=150
-        
-        #gemini_explanation = response[0].text
         return jsonify({'result': convo.last.text})
 
     except Exception as e:  
         return jsonify({'result': f"Error calling Gemini API: {str(e)}"})
         
+# Run the app
 if __name__ == '__main__':
     app.run(port=7777)

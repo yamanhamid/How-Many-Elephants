@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tags for character set and viewport configuration -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title of the webpage -->
     <title>Unit Conversion</title>
+    <!-- CSS styles -->
     <style>
         textarea {
             resize: both;  
@@ -13,30 +16,38 @@
     </style>
 </head>
 <body>
+    <!-- Heading -->
     <h1>Unit Conversion</h1>
+    <!-- Div to display the result -->
     <div id="result"></div>
+    <!-- JavaScript code -->
     <script>
+        // Function to perform reality check
         function RealityCheck() {
+            // Get the input value
             var input = document.getElementById("input").value;
 
+            // Send a POST request to the Flask endpoint for reality check
             fetch('http://localhost:7777/Reality_check', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ query: input })
             })
+            // Handle response
             .then(response => response.json())
             .then(data => {
+                // Update the result div with the response
                 document.getElementById("result").textContent = "HME's Assessment: " + data.result; 
             })
             .catch(error => console.error('Error:', error)); 
         }
 
-        // Function to handle form submission
+        // Function to perform unit conversion
         function convertUnits() {
             // Get the input value
             var input = document.getElementById("input").value;
 
-            // Send a POST request to the Flask endpoint
+            // Send a POST request to the Flask endpoint for unit conversion
             fetch('http://localhost:7777/convert_units', {
                 method: 'POST',
                 headers: {
@@ -44,6 +55,7 @@
                 },
                 body: JSON.stringify({ query: input })
             })
+            // Handle response
             .then(response => response.json())
             .then(data => {
                 // Update the result div with the response
@@ -54,14 +66,14 @@
                 console.error('Error:', error);
             })
         }
-
-
-       
     </script>
+     <!-- Input field for user query -->
      <label for="input">Enter your query:</label><br>
      <textarea id="input" name="input"></textarea><br><br> 
+     <!-- Buttons to trigger different actions -->
      <button onclick="RealityCheck()">Reality Check</button>
      <button onclick="convertUnits()">Convert</button>
+     <!-- This button seems to have the same functionality as the "Convert" button -->
      <button onclick="convertUnits()">Equivalent To</button>
  </body>
  </html>
