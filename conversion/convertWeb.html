@@ -1,51 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <!-- Meta tags for character set and viewport configuration -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Title of the webpage -->
-    <title>Unit Conversion</title>
-    <!-- CSS styles -->
+    <title>H.M.E</title>
     <style>
-        textarea {
-            resize: both;  
-            min-height: 50px; 
-            overflow: auto;  
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        img {
+            width: 50px;
+            margin-bottom: 10px;
+        }
+
+        #prompt-input {
+            width: calc(100% - 22px);  /* Keep width at 100% of its container */
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            min-height: 50px; /* Start with a minimum height */
+            overflow-y: hidden; /* Hide vertical scrollbar */
+            resize: vertical; /* Allow resizing only vertically */
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 0 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #response-area {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            min-height: 150px;
+        }
+
+        #text-response {
+            text-align: left;
+        }
+
+        #visual-representation {
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <!-- Heading -->
-    <h1>Unit Conversion</h1>
-    <!-- Div to display the result -->
-    <div id="result"></div>
-    <!-- JavaScript code -->
-    <script>
-        // Function to perform reality check
-        function RealityCheck() {
-            // Get the input value
-            var input = document.getElementById("input").value;
+    <div class="container">
+        <img src="elephant_logo.png" alt="H.M.E Logo"> <h1>How can I help?</h1>
 
-            // Send a POST request to the Flask endpoint for reality check
+        <textarea id="prompt-input" placeholder="Enter a prompt here"></textarea> 
+
+        <div class="button-group">
+            <button id="reality-check">Reality Check</button>
+            <button id="basic-conversion">Basic Conversion</button>
+            <button id="equivalent-to">Equivalent To</button>
+        </div>
+
+        <div id="response-area">
+            <p id="text-response"></p> 
+            <div id="visual-representation"></div>
+        </div>
+    </div>
+
+    <script>
+        // --- JavaScript (script.js) ---
+
+        // Event listeners for buttons
+        document.getElementById('reality-check').addEventListener('click', realityCheck);
+        document.getElementById('basic-conversion').addEventListener('click', basicConversion);
+        document.getElementById('equivalent-to').addEventListener('click', equivalentTo);
+
+        // Function to auto-resize the textarea
+        const promptInput = document.getElementById('prompt-input');
+        promptInput.addEventListener('input', () => {
+            promptInput.style.height = 'auto';
+            promptInput.style.height = (promptInput.scrollHeight) + 'px';
+        });
+
+        // Example function (Replace with your actual Flask API calls)
+        function realityCheck() {
+            const input = document.getElementById('prompt-input').value;
             fetch('http://localhost:7777/Reality_check', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ query: input })
             })
-            // Handle response
             .then(response => response.json())
             .then(data => {
-                // Update the result div with the response
-                document.getElementById("result").textContent = "HME's Assessment: " + data.result; 
+                document.getElementById('text-response').textContent = "HME's Assessment: " + data.result;
             })
-            .catch(error => console.error('Error:', error)); 
+            .catch(error => console.error('Error:', error));
         }
 
-        // Function to perform unit conversion
-        function convertUnits() {
+        function basicConversion() {
             // Get the input value
-            var input = document.getElementById("input").value;
+            var input = document.getElementById("prompt-input").value;
 
             // Send a POST request to the Flask endpoint for unit conversion
             fetch('http://localhost:7777/convert_units', {
@@ -59,21 +136,13 @@
             .then(response => response.json())
             .then(data => {
                 // Update the result div with the response
-                var resultText = "<h2>Result:</h2><p>Magnitude: " + data.result.magnitude + "</p><p>Unit: " + data.result.unit + "</p>";
-                document.getElementById("result").innerHTML = resultText;
+                var resultText = "<p>Magnitude: " + data.result.magnitude + "</p><p>Unit: " + data.result.unit + "</p>";
+                document.getElementById("text-response").innerHTML = resultText;
             })
             .catch(error => {
                 console.error('Error:', error);
             })
         }
     </script>
-     <!-- Input field for user query -->
-     <label for="input">Enter your query:</label><br>
-     <textarea id="input" name="input"></textarea><br><br> 
-     <!-- Buttons to trigger different actions -->
-     <button onclick="RealityCheck()">Reality Check</button>
-     <button onclick="convertUnits()">Convert</button>
-     <!-- This button seems to have the same functionality as the "Convert" button -->
-     <button onclick="convertUnits()">Equivalent To</button>
- </body>
- </html>
+</body>
+</html>
