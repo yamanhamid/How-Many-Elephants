@@ -64,6 +64,7 @@ def RealityCheck():
     try:
         convo.send_message(f"Is the following prompt realistic?: {query}? Explain why/why not and use comparisons so the user can better understand."),
         max_tokens=150
+        #print(convo.last.text)
         return jsonify({'result': convo.last.text})
 
     except Exception as e:  
