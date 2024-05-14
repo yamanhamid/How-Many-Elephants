@@ -3,6 +3,9 @@ from flask import Flask, request, jsonify  # Import Flask framework for creating
 from flask_cors import CORS  # Import CORS module for enabling Cross-Origin Resource Sharing
 import pint  # Import the Pint library for handling physical quantities and units
 import google.generativeai as genai  # Import the GenerativeAI module from Google's library for AI-powered text generation
+import sys
+sys.path.append('Reality Check\.gitignore')  # Add the config file's directory to Python's search path
+import config
 
 
 #For api to work you must to into your terminal and do the following:
@@ -13,7 +16,7 @@ import google.generativeai as genai  # Import the GenerativeAI module from Googl
 #You also need python installed, if installed python does not work install python lastest version from microsoft store
 
 # Configure the GenerativeAI API with your API key
-genai.configure(api_key="AIzaSyDqL4uMB8tpcrEU6xVBrH5RhX8YJAcs5xk")
+genai.configure(api_key=config.GEMINI_API_KEY)
 
 # Set up generation configuration for the model
 generation_config = {
