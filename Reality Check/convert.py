@@ -48,7 +48,7 @@ def convert():
 
     # Perform unit conversion using pint
     try:
-        converted = ureg(query).to_base_units()
+        converted = ureg(query).to("minutes")
         result = {'magnitude': converted.magnitude, 'unit': str(converted.units)}
         return jsonify({'result': result})
     except pint.UndefinedUnitError:
@@ -62,9 +62,9 @@ def RealityCheck():
 
     # Use Gemini for understanding and a basic reality check
     try:
-        convo.send_message(f"Is the following prompt realistic?: {query}? Explain why/why not and use comparisons so the user can better understand."),
+        convo.send_message(f"Is the following prompt realistic?: {query}? Explain why/why not and use comparisons so the user can better understand. make sure to have a bold formatted conclusion and when showing equations using multiplication the letter x give answer with absolutely no formatting or astricks' or /n"),
         max_tokens=150
-        #print(convo.last.text)
+        #print(convo.last.text)  #so the user can better understand. make sure to have a bold formatted conclusion  
         return jsonify({'result': convo.last.text})
 
     except Exception as e:  
