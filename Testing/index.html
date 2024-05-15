@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>How Many Elepahnts</title>
+</head>
+<body>
+<link rel="stylesheet" href="style.css">
+  <div id="home" class="page">
+    <img src="elephant_logo.png" alt="HME Logo">
+    <h1>Welcome to How Many Elepahnts</h1>
+  </div>
+  
+  <nav>
+    <img src="elephant_logo.png" alt="H.M.E Logo">
+    <button onclick="goToPage('home')">Home</button>
+    <button onclick="goToPage('reality')">Reality Check</button>
+    <button onclick="goToPage('conversion')">Conversion</button>
+    <button onclick="goToPage('equivalent')">Equivalent</button>
+  </nav>
+
+  <div id="reality" class="page" style="display: none;">
+    <h2>REALITY CHECK</h2>
+    <div id="reality1">
+      <input type="text" id="reality-input" placeholder="Enter a prompt here">
+    </div>
+    
+    <div id="reality2">
+      <textarea id="reality-output"></textarea>
+    </div>
+    
+    <div id="reality3">
+      <button onclick="clearInput('reality-input')">Clear</button>
+      <button onclick="realityCheck()">Go</button>
+    </div>
+    
+  </div>
+
+  <div id="conversion" class="page" style="display:none;">
+    <h2>CONVERSION</h2>
+    <div id="conversion1">
+      <input type="text" id="conversion-input" placeholder="Enter value">
+      <select id="conversion-unit">
+        <option value="height">Height</option>
+        <option value="weight">Weight</option>
+        <option value="length">Length</option>
+      </select>
+    </div>
+    <div id="conversion2">
+      <input type="text" id="conversion-output">
+      <select id="conversion-unit">
+        <option value="height">Height</option>
+        <option value="weight">Weight</option>
+        <option value="length">Length</option>
+      </select>
+    </div>
+    
+    <div id="conversion3">
+      <button onclick="clearInput('conversion-input')">Clear</button>
+      <button onclick="conversionFunction()">Go</button>
+    </div>
+  </div>
+
+  <div id="equivalent" class="page" style="display: none;">
+    <h2>EQUIVALENT TO</h2>
+    <div id="equivalent1">
+      <input type="text" id="equivalent-input" placeholder="Enter a prompt here">
+      <select id="conversion-unit">
+        <option value="height">Height</option>
+        <option value="weight">Weight</option>
+        <option value="length">Length</option>
+      </select>
+
+      <select id="conversion-unit">
+        <option value="height">Height</option>
+        <option value="weight">Weight</option>
+        <option value="length">Length</option>
+      </select>
+
+      <select id="conversion-unit">
+        <option value="height">Height</option>
+        <option value="weight">Weight</option>
+        <option value="length">Length</option>
+      </select>
+    </div>
+    
+    <div id="equivalent2">
+      <textarea id="equivalent-output"></textarea>
+    </div>
+    
+    <div id="equivalent3">
+      <button onclick="clearInput('equivalent-input')">Clear</button>
+      <button onclick="realityCheck()">Go</button>
+    </div>
+    
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
