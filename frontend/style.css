@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation Bar Styling */
+nav {
+    background-color: #333; /* Dark background */
+    color: white;
+    padding: 15px;
+    position: fixed; /* Fix to the left */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 250px; /* Adjust width as needed */
+}
+
+nav img {
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+nav button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: block; /* Occupy full width */
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Page Content Styling */
+.page {
+    text-align: center; /* Left-align content on pages */
+    margin-left: 170px; /* Account for the width of the nav bar */
+    padding: 20px;
+}
+
+#reality {
+  #reality1 {
+    padding-bottom: 10px;
+    #reality-input {
+      width: 500px;
+      height: 100px;
+    }
+  }
+
+  #reality2 {
+    padding-bottom: 10px;
+    #reality-output {
+      width: 500px;
+      height: 300px;
+    }
+  }
+}
+
+#conversion {
+  align-items: center;
+
+  #conversion1 {
+    padding-bottom: 10px;
+
+    #conversion-input {
+      width: 500px;
+    }
+  }
+
+  #conversion2{
+    padding-bottom: 10px;
+
+    #conversion-output {
+      width: 500px;
+    }
+  }
+}
+
+#equivalent1 {
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  #equivalent-input {
+    width: 500px;
+    height: 100px;
+    margin-bottom: 10px;
+  }
+  
+  select {
+    margin-bottom: 10px;
+    width: 200px; /* Adjust the width of the combo boxes as needed */
+  }
+  
+  #equivalent2 {
+    padding-bottom: 10px;
+  }
+  
+  #equivalent-output {
+    width: 500px;
+    height: 300px;
+  }
+  
+  #equivalent3 {
+    padding-bottom: 10px;
+  }
+  
