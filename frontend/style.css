@@ -8,34 +8,72 @@ body {
 
 /* Navigation Bar Styling */
 nav {
-    background-color: #333; /* Dark background */
-    color: white;
-    padding: 15px;
-    position: fixed; /* Fix to the left */
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 250px; /* Adjust width as needed */
+  background-color: #333; /* Dark background */
+  color: white;
+  padding: 15px;
+  position: fixed; /* Fix to the left */
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px; /* Adjust width as needed */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Arrange items vertically */
+  align-items: center; /* Center items horizontally */
+}
+
+nav {
+  background-color: #333; /* Dark background */
+  color: white;
+  padding: 15px;
+  position: fixed; /* Fix to the left */
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px; /* Adjust width as needed */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Arrange items vertically */
+  align-items: center; /* Center items horizontally */
 }
 
 nav img {
-    width: 120px;
-    margin-bottom: 20px;
+  width: 120px;
+  margin-bottom: 20px; /* Add some spacing below the logo */
 }
 
 nav button {
-    background-color: #4CAF50; /* Green */
-    border: none;
-    color: white;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    display: block; /* Occupy full width */
-    width: 100%;
-    margin-bottom: 10px;
-    font-size: 14px;
-    border-radius: 5px;
-    cursor: pointer;
+  background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  width: 80%; 
+  margin-bottom: 30px;
+  font-size: 14px;
+  border-radius: 25px; 
+  cursor: pointer;
+  flex-grow: 1; 
+  transition: background-color 0.3s; 
+  animation: glowing 1300ms infinite;
+}
+
+@keyframes glowing {
+  0% {
+    background-color: #2ba805;
+    box-shadow: 0 0 5px #2ba805;
+  }
+  50% {
+    background-color: #49e819;
+    box-shadow: 0 0 20px #49e819;
+  }
+  100% {
+    background-color: #2ba805;
+    box-shadow: 0 0 5px #2ba805;
+  }
+}
+
+nav button:hover {
+  background-color: #45a049; 
 }
 
 /* Page Content Styling */
@@ -98,7 +136,7 @@ nav button {
   
   select {
     margin-bottom: 10px;
-    width: 200px; /* Adjust the width of the combo boxes as needed */
+    width: 100px; /* Adjust the width of the combo boxes as needed */
   }
   
   #equivalent2 {
