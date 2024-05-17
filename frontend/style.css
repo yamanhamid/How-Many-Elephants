@@ -21,20 +21,6 @@ nav {
   align-items: center; /* Center items horizontally */
 }
 
-nav {
-  background-color: #333; /* Dark background */
-  color: white;
-  padding: 15px;
-  position: fixed; /* Fix to the left */
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 250px; /* Adjust width as needed */
-  display: flex; /* Use flexbox for layout */
-  flex-direction: column; /* Arrange items vertically */
-  align-items: center; /* Center items horizontally */
-}
-
 nav img {
   width: 120px;
   margin-bottom: 20px; /* Add some spacing below the logo */
@@ -122,33 +108,29 @@ nav button:hover {
 }
 
 #equivalent1 {
-    padding-bottom: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  #equivalent-input {
-    width: 500px;
-    height: 100px;
-    margin-bottom: 10px;
-  }
-  
-  select {
-    margin-bottom: 10px;
-    width: 100px; /* Adjust the width of the combo boxes as needed */
-  }
-  
-  #equivalent2 {
-    padding-bottom: 10px;
-  }
-  
-  #equivalent-output {
-    width: 500px;
-    height: 300px;
-  }
-  
-  #equivalent3 {
-    padding-bottom: 10px;
-  }
-  
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#equivalent-input {
+  width: 500px;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+select {
+  margin-bottom: 10px;
+  width: 100px; /* Adjust the width of the combo boxes as needed */
+}
+
+#equivalent-selects {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+#equivalent-selects select {
+  margin: 0 5px; /* Adjust spacing between select boxes */
+}
