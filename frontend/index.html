@@ -29,7 +29,7 @@
     </div>
 
     <div id="reality3">
-      <button onclick="clearInput('reality-input')">Clear</button>
+      <button onclick="clearInput('reality-input', 'reality-output')">Clear</button>
       <button onclick="realityCheck()">Go</button>
     </div>
 
@@ -38,50 +38,55 @@
   <div id="conversion" class="page" style="display:none;">
     <h2>CONVERSION</h2>
     <div id="conversion1">
-      <input type="text" id="conversion-input" placeholder="Enter value">
-      <select id="conversion-unit">
-        <option value="height">Height</option>
-        <option value="weight">Weight</option>
-        <option value="length">Length</option>
-      </select>
+        <input type="number" id="conversion-input" placeholder="Enter value">
+        <select id="conversion-from-unit">
+          <option value="hours">Hours</option>
+          <option value="minutes">Minutes</option>
+          <option value="seconds">Seconds</option>
+          <option value="milliseconds">Milliseconds</option>
+        </select>
     </div>
     <div id="conversion2">
-      <input type="text" id="conversion-output">
-      <select id="conversion-unit">
-        <option value="height">Height</option>
-        <option value="weight">Weight</option>
-        <option value="length">Length</option>
-      </select>
+        <select id="conversion-to-unit">
+            <option value="hours">Hours</option>
+            <option value="minutes">Minutes</option>
+            <option value="seconds">Seconds</option>
+            <option value="milliseconds">Milliseconds</option>
+        </select>
+        <button onclick="conversionFunction()">Convert</button>
     </div>
-
     <div id="conversion3">
-      <button onclick="clearInput('conversion-input')">Clear</button>
-      <button onclick="conversionFunction()">Go</button>
+        <span id="conversion-output"></span>
     </div>
   </div>
+
+
 
   <div id="equivalent" class="page" style="display: none;">
     <h2>EQUIVALENT TO</h2>
     <div id="equivalent1">
       <input type="text" id="equivalent-input" placeholder="Enter a prompt here">
-      <select id="conversion-unit">
-        <option value="height">Height</option>
-        <option value="weight">Weight</option>
-        <option value="length">Length</option>
-      </select>
-
-      <select id="conversion-unit">
-        <option value="height">Height</option>
-        <option value="weight">Weight</option>
-        <option value="length">Length</option>
-      </select>
-
-      <select id="conversion-unit">
-        <option value="height">Height</option>
-        <option value="weight">Weight</option>
-        <option value="length">Length</option>
-      </select>
-    </div>
+      <div id="equivalent-selects">
+          <select>
+              <option value="height">Height</option>
+              <option value="weight">Weight</option>
+              <option value="length">Length</option>
+          </select>
+  
+          <select>
+              <option value="height">Height</option>
+              <option value="weight">Weight</option>
+              <option value="length">Length</option>
+          </select>
+  
+          <select>
+              <option value="height">Height</option>
+              <option value="weight">Weight</option>
+              <option value="length">Length</option>
+          </select>
+      </div>
+  </div>
+  
 
     <div id="equivalent2">
       <textarea id="equivalent-output"></textarea>
