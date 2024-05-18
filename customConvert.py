@@ -22,6 +22,7 @@ def customConvert(x, y, a):
      print(unit2(unit1(x)))
     except:
      print("Error Occurred")
+
 #tests
 customConvert(6, 'skyTower', 'km')
 customConvert(1, 'shark', 'm')
