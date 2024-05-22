@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Many Elephants</title>
+</head>
+<body>
+<link rel="stylesheet" href="style.css">
+  <div id="home" class="page">
+    <img src="elephant_logo.png" alt="HME Logo">
+    <h1>Welcome to How Many Elephants</h1>
+  </div>
+
+  <nav>
+    <img src="elephant_logo.png" alt="H.M.E Logo">
+    <button onclick="goToPage('home')">Home</button>
+    <button onclick="goToPage('reality')">Reality Check</button>
+    <button onclick="goToPage('conversion')">Conversion</button>
+    <button onclick="goToPage('equivalent')">Equivalent</button>
+  </nav>
+
+  <div id="reality" class="page" style="display: none;">
+    <h2>REALITY CHECK</h2>
+    <div id="reality1">
+      <input type="text" id="reality-input" placeholder="Enter a prompt here">
+    </div>
+
+    <div id="reality2">
+      <textarea id="reality-output" readonly></textarea>
+    </div>
+
+    <div id="reality3">
+      <button onclick="clearInput('reality-input')">Clear</button>
+      <button onclick="realityCheck()">Go</button>
+    </div>
+
+  </div>
+
+  <div id="conversion" class="page" style="display:none;">
+    <h2>CONVERSION</h2>
+    <div id="conversion1">
+      <input type="text" id="conversion-input" placeholder="Enter value">
+      <select id="input-unit">
+        <option value="" disabled selected>Input</option>
+        <option value="cm">Centimeter</option>
+        <option value="m">Meter</option>
+        <option value="km">Kilometer</option>
+        <option value="inch">Inches</option>
+        <option value="ft">Feet</option>
+        <option value="yd">Yards</option>
+        <option value="mi">Miles</option>
+        <option value="s">Second</option>
+        <option value="min">Minutes</option>
+        <option value="h">Hour</option>
+        <option value="day">Days</option>
+        <option value="wk">Weeks</option>
+        <option value="g">Grams</option>
+        <option value="kg">Kilograms</option>
+        <option value="tonne">Tonnes</option>
+        <option value="oz">Ounces</option>
+        <option value="lb">Pounds</option>
+        <option value="ton">Tons</option>
+    </select>
+    </div>
+    <div id="conversion2">
+      <input type="text" id="conversion-output" readonly>
+      <select id="output-unit">
+        <option value="" disabled selected>Output</option>
+        <option value="cm">Centimeter</option>
+        <option value="m">Meter</option>
+        <option value="km">Kilometer</option>
+        <option value="inch">Inches</option>
+        <option value="ft">Feet</option>
+        <option value="yd">Yards</option>
+        <option value="mi">Miles</option>
+        <option value="s">Second</option>
+        <option value="min">Minutes</option>
+        <option value="h">Hour</option>
+        <option value="day">Days</option>
+        <option value="wk">Weeks</option>
+        <option value="g">Grams</option>
+        <option value="kg">Kilograms</option>
+        <option value="tonne">Tonnes</option>
+        <option value="oz">Ounces</option>
+        <option value="lb">Pounds</option>
+        <option value="ton">Tons</option>
+    </select>
+    </div>
+
+    <div id="conversion3">
+      <button onclick="clearInput('conversion-input')">Clear</button>
+      <button onclick="convertUnits()">Go</button>
+    </div>
+  </div>
+
+  <div id="equivalent" class="page" style="display: none;">
+    <h2>EQUIVALENT TO</h2>
+    <div id="equivalent1">
+      <input type="text" id="equivalent-value" placeholder="Enter a prompt here">
+      <select id="equivalent-input">
+        <option value="" disabled selected>Choose a Unit</option>
+        <option value="km">Kilometer</option>
+        <option value="inch">Inches</option>
+        <option value="ft">Feet</option>
+        <option value="yd">Yards</option>
+        <option value="mi">Miles</option>
+        <option value="g">Grams</option>
+        <option value="kg">Kilograms</option>
+        <option value="tonne">Tonnes</option>
+        <option value="oz">Ounces</option>
+        <option value="lb">Pounds</option>
+        <option value="ton">Tons</option>
+      </select>
+
+      <label for="height">Height</label>
+      <select id="equivalent-type">
+        <option value="" disabled selected>Choose one</option>
+        <option value="skyTower">Sky Tower (Height)</option>
+        <option value="SaturnV">Saturn V (Height)</option>
+        <option value="airbus">Airbus (Weight)</option>
+        <option value="elephant">Elephant (Weight)</option>
+        <option value="ruler">Ruler (Length)</option>
+        <option value="shark">Shark (Length)</option>
+      </select>
+    </div>
+
+    <div id="equivalent2">
+      <textarea id="equivalent-output"></textarea>
+    </div>
+
+    <div id="equivalent3">
+      <button onclick="clearInput('equivalent-input')">Clear</button>
+      <button onclick="equivalentTo()">Go</button>
+    </div>
+
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
