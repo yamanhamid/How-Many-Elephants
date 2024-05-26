@@ -25,12 +25,12 @@ app = Flask(__name__)
 CORS(app)
 
 equivalents = {
-    "skyTower": scaled_unit('skyTower', 'm', 328),  # Example height for Sky Tower
-    "SaturnV": scaled_unit('SaturnV', 'm', 111),    # Example height for Saturn V
-    "airbus": scaled_unit('airbus', 'tonne', 50),   # Example weight for Airbus
-    "elephant": scaled_unit('elephant', 'tonne', 4.5),  # Example weight for Elephant
-    "ruler": scaled_unit('ruler', 'cm', 30),        # Example length for Ruler
-    "shark": scaled_unit('shark', 'ft', 25)         # Example length for Shark
+    "skyTower": scaled_unit('skyTower', 'm', 328), 
+    "burjKhalifa": scaled_unit('burjKhalifa', 'm', 830),    
+    "airbus": scaled_unit('airbus', 'tonne', 267),   
+    "elephant": scaled_unit('elephant', 'tonne', 4.5),  
+    "rugbyField": scaled_unit('rugbyField', 'm', 100),      
+    "shark": scaled_unit('shark', 'm', 4.9)        
 }
 
 @app.route('/convert/<conversion>', methods=['POST'])
