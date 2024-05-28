@@ -1,30 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>Eiffel Tower Height</title>
-      <script src="linkedDataScript.js" defer></script>
-      <script src="script.js" defer></script>
-      <link rel="stylesheet" type="text/css" href="styles.css">
-      
-      
-  </head>
-  <body>
-      <h1>Equivalent to:</h1>
-        <input type="text" id="inputHeight" placeholder="Enter height...">
-        <br><br>
-        <button onclick="showRealityCheck()">Reality check:</button>
-        <button onclick="showBasicConversion()">Basic Conversion:</button>
-        <button onclick="showEquivalentTo()">Equivalent to:</button>
-        <br><br>
-        <div id="equivalentToOptions" style="display: none;">
-            <select id="entityOptions">
-                <option value="">Choose an option</option>
-                <option value="elephant">Elephant</option>
-                <option value="eiffelTower">Eiffel Tower</option>
-            </select>
-            <button onclick="showHeight()">Show Height</button>
-        </div>
+    <title>Wikidata Search</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="linkedDataScript.js" defer></script>
+</head>
+<body>
+    <h1>Wikidata Search</h1>
+    <input type="text" id="searchInput" placeholder="Enter search term...">
+    <button onclick="searchWikidata()">Search</button>
+    <div id="searchResults"></div>
     <div id="result"></div>
-  </body>
+</body>
 </html>

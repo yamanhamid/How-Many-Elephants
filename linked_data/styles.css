@@ -1,33 +1,24 @@
-/* CSS code */
 body {
     font-family: Arial, sans-serif;
+    margin: 20px;
     background-color: #fff; /* Keep the background color white */
     color: #333;
-    margin: 0; /* Remove default body margin */
 }
 
 h1 {
     color: #007bff;
 }
 
-p {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-left: 20px; /* Align paragraphs to the left with some margin */
-}
-
 input[type="text"] {
-    width: 200px;
+    width: 300px;
     padding: 10px;
-    margin: 10px;
-    display: block;
+    margin: 10px 0;
     box-sizing: border-box;
-    margin-left: 20px; /* Align text input to the left with some margin */
 }
 
 button {
     padding: 10px 20px;
-    margin: 10px 20px; /* Add margin on the left and right */
+    margin: 10px 0;
     cursor: pointer;
     background-color: #4CAF50;
     color: white;
@@ -39,19 +30,16 @@ button:hover {
     background-color: #45a049;
 }
 
-select {
-    padding: 10px;
-    margin: 10px;
-    margin-left: 20px; /* Align select element to the left with some margin */
-}
-
-#equivalentToOptions {
-    text-align: left; /* Align the container div to the left */
-}
-
-#result {
-    text-align: left; /* Align the result div to the left */
+#searchResults {
     margin-top: 20px;
-    font-size: 18px;
-    margin-left: 20px; /* Add margin to the left */
+    font-size: 16px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 5px 0;
 }
