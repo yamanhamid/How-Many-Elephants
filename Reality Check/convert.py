@@ -65,7 +65,7 @@ def RealityCheck():
 
     # Use Gemini for understanding and a basic reality check
     try:
-        convo.send_message(f"Is the following prompt realistic?: {query}? Explain why/why not and use comparisons so the user can better understand. make sure to have a bold formatted conclusion and when showing equations using multiplication the letter x give answer with absolutely no formatting or astricks' or /n"),
+        convo.send_message(f"Is the following prompt realistic?: {query}? Explain it to a kid why/why not and use comparisons so the user can better understand. make sure to have a bold formatted conclusion"),
         max_tokens=150
         #print(convo.last.text)  #so the user can better understand. make sure to have a bold formatted conclusion  
         return jsonify({'result': convo.last.text})

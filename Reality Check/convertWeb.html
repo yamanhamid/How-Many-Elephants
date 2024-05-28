@@ -100,7 +100,7 @@
 <body>
     <div class="container">
         <img src="elephant_logo.png" alt="H.M.E Logo"> <h1>How can I help?</h1>
-
+        
         <textarea id="prompt-input" placeholder="Enter a prompt here"></textarea> 
 
         <div class="button-group">
@@ -174,27 +174,31 @@
             
         
        // Function to format Gemini's response
-       function formatGeminiResponse(text) {
-            text = text.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>'); // Bold
-             // Create an empty string to store the formatted text
-            let formattedText = "";
+    function formatGeminiResponse(text) {
+    // Replace double asterisks with HTML tags for bold text.
+    text = text.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>'); 
 
-            // Loop through the text, one character at a time
-            for (let i = 0; i < text.length; i++) {
-                if (text[i] === '*') {
-                    // If you encounter an asterisk, add a line break tag
-                    formattedText += '<br><br>';
-                } else {
-                    // Otherwise, add the current character
-                    formattedText += text[i];
-                }
-            }
-            return formattedText
-            // Replace double asterisks with HTML tags for bold text.
-            
-            formattedText = formattedText.replace(/\*\*(.+?)\*\*/g, '<b>$1</b>'); 
-            return formattedText; 
+    // Split the text into lines
+    const lines = text.split('\n');
+
+    // Format each line
+    const formattedText = lines.map(line => {
+        if (line.trim().startsWith('*')) {
+            return `<br>${line.trim().slice(1)}`;  // List item with 2 spaces indentation
+        } else if (line.trim().startsWith('Comparison:')) { 
+            return `<br><b>Comparison:</b><br>${line.trim().slice(10)}`; // Add line break before and after the comparison
+        } else if (line.trim().startsWith('Conclusion:')) { 
+            return `<br><b>Conclusion:</b><br>${line.trim().slice(10)}`;  // Add line break before and after the conclusion
+        } else {
+            return `<p>${line.trim()}</p>`; // Wrap regular text in paragraphs
         }
+    }).join('');  // Join all the formatted lines back into a single string
+
+    return formattedText;
+}
+
+
+
      
         function basicConversion() {
             // Get the input value
