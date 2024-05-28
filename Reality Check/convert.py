@@ -16,7 +16,7 @@ import config
 #You also need python installed, if installed python does not work install python lastest version from microsoft store
 
 # Configure the GenerativeAI API with your API key
-genai.configure(api_key=config.GEMINI_API_KEY)
+genai.configure(api_key="AIzaSyDqL4uMB8tpcrEU6xVBrH5RhX8YJAcs5xk")
 
 # Set up generation configuration for the model
 generation_config = {
