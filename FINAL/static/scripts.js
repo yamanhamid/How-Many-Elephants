@@ -116,7 +116,65 @@ function formatGeminiResponse(text) {
   return formattedText;
 }
 
+const dalleEndpoint = 'https://api.openai.com/v1/images/generations';
+const reqButton = document.getElementById('button-request');
+const reqStatus = document.getElementById('request-status');
+const key = '';
 
+function imagine() {
+  // Fetch DOM elements
+  
+  const input = document.getElementById('imagine-input').value;
+
+  const reqBody = {
+    "prompt": input,
+    "n": 1,
+    "size": "512x512",
+    "model": "dall-e-2",
+    "response_format": "url",
+  };
+
+  const imageResponse = document.getElementById('imagine-image');
+  
+  fetch(dalleEndpoint, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${key}`,
+    },
+    body: JSON.stringify(reqBody)
+  })
+  .then(response => response.json())
+  .then(json => addImages(json, prompt))
+  .catch(error => {
+    console.error('Error:', error);
+    imageResponse.alt = "Error fetching data from the server.";
+  });
+}
+
+function addImages(jsonData, prompt) {
+  console.log(jsonData);
+
+  // Handle a possible error response from the API
+  if (jsonData.error)
+  {
+    reqStatus.innerHTML = 'ERROR: ' + jsonData.error.message;
+    return;
+  }
+  
+  // Parse the response object, deserialize the image data, 
+  // and attach new images to the page.
+  const container = document.getElementById('image-container');
+  for (let i = 0; i < jsonData.data.length; i++) {
+    let imgData = jsonData.data[i];
+    let img = document.createElement('img');
+    img.src = imgData.url;
+    img.alt = `prompt: ${prompt}, revised_prompt: ${imgData.revised_prompt}`;
+    container.prepend(img);
+  }
+
+  reqStatus.innerHTML = jsonData.data.length +' images received for "' + prompt + '"';
+}
 
 // Function to switch between modes (measurement or something) on the Equivalent page
 function switchMode(mode) {

@@ -148,6 +148,21 @@ input, textarea, select {
 
 }
 
+#image-container {
+  max-width: fit-content;
+  max-height: fit-content;
+  margin-bottom: 20px; 
+  border-radius: 15px; 
+  border: 1px solid #ccc;
+  padding: 10px; 
+  transition: border-color 0.3s;
+  white-space: pre-wrap;
+  overflow: auto;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 input:focus, textarea:focus, select:focus {
   border-color: #6a4c93; /* Dark Purple on focus */
 }
