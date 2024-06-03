@@ -21,7 +21,10 @@ model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest", generation_con
 # Start a conversation with an empty history
 convo = model.start_chat(history=[])
 
-app = Flask(__name__)
+app = Flask(__name__,
+            static_url_path='', 
+            static_folder='static'
+            )
 CORS(app)
 
 equivalents = {

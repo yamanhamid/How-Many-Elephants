@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Many Elephants</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="home" class="page">
+    <img src="elephant_logo.png" alt="HME Logo">
+    <h1>Welcome to How Many Elephants</h1>
+  </div>
+
+  <nav>
+    <img src="elephant_logo.png" alt="H.M.E Logo">
+    <button onclick="goToPage('home')" aria-label="Go to Home">Home</button>
+    <button onclick="goToPage('reality')" aria-label="Go to Reality Check">Reality Check</button>
+    <button onclick="goToPage('conversion')" aria-label="Go to Conversion">Conversion</button>
+    <button onclick="goToPage('equivalent')" aria-label="Go to Equivalent">Equivalent</button>
+  </nav>
+
+  <div id="reality" class="page" style="display: none;">
+    <h2>Reality Check</h2>
+    <div class="input-container">
+      <input type="text" id="reality-input" placeholder="Enter a prompt here">
+    </div>
+    <div class="output-container">
+      <p id="reality-output" readonly></p>  </div> 
+    <div class="button-container">
+      <button onclick="clearInput('reality-input')">Clear</button>
+      <button onclick="realityCheck()">Go</button>
+    </div>
+</div>
+
+  <div id="conversion" class="page" style="display:none;">
+    <h2>Conversion</h2>
+    <div class="input-container">
+      <input type="text" id="conversion-input" placeholder="Enter value">
+      <select id="input-unit">
+        <option value="" disabled selected>Input</option>
+        <option value="cm">Centimeter</option>
+        <option value="m">Meter</option>
+        <option value="km">Kilometer</option>
+        <option value="inch">Inches</option>
+        <option value="ft">Feet</option>
+        <option value="yd">Yards</option>
+        <option value="mi">Miles</option>
+        <option value="s">Second</option>
+        <option value="min">Minutes</option>
+        <option value="h">Hour</option>
+        <option value="day">Days</option>
+        <option value="wk">Weeks</option>
+        <option value="g">Grams</option>
+        <option value="kg">Kilograms</option>
+        <option value="tonne">Tonnes</option>
+        <option value="oz">Ounces</option>
+        <option value="lb">Pounds</option>
+        <option value="ton">Tons</option>
+      </select>
+    </div>
+    <div class="output-container">
+      <input type="text" id="conversion-output" readonly>
+      <select id="output-unit">
+        <option value="" disabled selected>Output</option>
+        <option value="cm">Centimeter</option>
+        <option value="m">Meter</option>
+        <option value="km">Kilometer</option>
+        <option value="inch">Inches</option>
+        <option value="ft">Feet</option>
+        <option value="yd">Yards</option>
+        <option value="mi">Miles</option>
+        <option value="s">Second</option>
+        <option value="min">Minutes</option>
+        <option value="h">Hour</option>
+        <option value="day">Days</option>
+        <option value="wk">Weeks</option>
+        <option value="g">Grams</option>
+        <option value="kg">Kilograms</option>
+        <option value="tonne">Tonnes</option>
+        <option value="oz">Ounces</option>
+        <option value="lb">Pounds</option>
+        <option value="ton">Tons</option>
+      </select>
+    </div>
+    <div class="button-container">
+      <button onclick="clearInput('conversion-input')">Clear</button>
+      <button onclick="convertUnits()">Go</button>
+    </div>
+  </div>
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How Many Elephants</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="equivalent" class="page" style="display: none;">
+        <div class="button-container">
+            <button onclick="switchMode('something')">Something in Something</button>
+            <button onclick="switchMode('measurement')">Measurement in Something</button>
+        </div>
+        <div id="something-in-something" style="display: none;">
+            <!-- First set of command line, search button, and selection box -->
+            <div class="input-container" id="search-input-container" style="display: none;">
+                <input type="text" id="smart-input" placeholder="Enter command...">
+                <button onclick="search()">Search</button>
+            </div>
+            <div id="selection-container" style="display: none;">
+                <select id="selection-box">
+                </select>
+            </div>
+            
+            <!-- Second set of command line, search button, and selection box -->
+            <div class="input-container" id="search-input-container-2" style="display: none;">
+                <label for="smart-input-2">IN:</label>
+                <div class="input-wrapper">
+                    <input type="text" id="smart-input-2" placeholder="Type in a search...">
+                    <button onclick="showSecondSearch()">Search</button>
+                </div>
+            </div>
+            <div id="selection-container-2" style="display: none;">
+                <select id="selection-box-2">
+                </select>
+            </div>
+        </div>
+        <div id="measurement-in-something" style="display: none;">
+          <!-- First set of command line with unit dropdown -->
+          <div class="input-container" id="measurement-search-input-container">
+              <input type="text" id="measurement-smart-input" placeholder="Type in measurement">
+              <select id="measurement-unit">
+                  <option value="cm">Centimeter</option>
+                  <option value="m">Meter</option>
+                  <option value="km">Kilometer</option>
+                  <!-- Add more options as needed -->
+              </select>
+              <button onclick="showSecondSearch()">Search</button>
+          </div>
+          <!-- Selection box for the first set -->
+          <div id="measurement-selection-container" class="selection-container" style="display: none;">
+            <select id="measurement-selection-box">
+            </select>
+          </div>
+          
+          <!-- Second set of command line with unit dropdown -->
+          <div class="input-container" id="measurement-search-input-container-2">
+              <input type="text" id="measurement-smart-input-2" placeholder="Type in a search">
+              <select id="measurement-selection-box-2">
+              </select>
+              <button onclick="showSecondSearch()">Search</button>
+          </div>
+          <!-- Selection box for the second set -->
+          <div id="measurement-selection-container-2" class="selection-container" style="display: none;">
+            <select id="measurement-selection-box-2">
+            </select>
+          </div>
+      </div>                    
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

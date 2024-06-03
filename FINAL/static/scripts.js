@@ -17,7 +17,7 @@ function convertUnits() {
   const inputValue = document.getElementById('conversion-input').value;
   const inputUnit = document.getElementById('input-unit').value;
   const outputUnit = document.getElementById('output-unit').value;
-  const url = '/convert/${inputUnit}_to_${outputUnit}`;
+  const url = `/convert/${inputUnit}_to_${outputUnit}`;
 
   fetch(url, {
     method: 'POST',
