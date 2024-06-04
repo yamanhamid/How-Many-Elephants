@@ -78,6 +78,13 @@ function equivalentTo() {
 function realityCheck() {
   const textResponse = document.getElementById('reality-output');
   const input = document.getElementById('reality-input').value;
+  const loadingBar = document.getElementById('loading-bar');
+  const loadingProgress = document.getElementById('loading-progress');
+
+   // Show the loading bar and reset its progress
+   loadingBar.style.display = 'block'; 
+   loadingProgress.style.width = '0%';  
+   textResponse.textContent = ""; //Clear the response 
 
   fetch('http://127.0.0.1:5000/realitycheck', {
     method: 'POST',
@@ -86,11 +93,13 @@ function realityCheck() {
   })
   .then(response => response.json())
   .then(data => {
+    loadingBar.style.display = 'none';
     const geminiResponse = data.result;
     const formattedResponse = formatGeminiResponse(geminiResponse);
     textResponse.innerHTML = "HME's Assessment: " + formattedResponse;
   })
   .catch(error => {
+    loadingBar.style.display = 'none';
     console.error('Error:', error);
     textResponse.textContent = "Error fetching data from the server.";
   });
