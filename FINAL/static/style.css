@@ -17,7 +17,8 @@ nav img {
   width: 120px;
   margin-bottom: 20px;
   border-radius: 50%; /* Rounded image */
-  animation: spin 5s linear infinite; /* Spinning animation */
+  transform: rotate(0deg);
+  animation: none;
 }
 
 @keyframes spin {
@@ -28,7 +29,6 @@ nav img {
     transform: rotate(360deg);
   }
 }
-
 nav button {
   background-color: #FBEAEB; /* Pastel Pink */
   border: none;
@@ -212,27 +212,3 @@ button:hover {
   background-color: #553c7b; /* Darker Purple */
 }
 
-#loading-bar {
-  height: 10px;
-  background-color: #ddd;  
-  border-radius: 5px;
-  overflow: hidden;
-  margin-bottom: 20px;
-}
-
-#loading-progress {
-  height: 100%;
-  background-color: #4CAF50; 
-  width: 0%; 
-  animation: loading 9s linear infinite; /* Add the loading animation */
-}
-
-@keyframes loading { 
-  0% { width: 0%; }
-  100% { width: 100%; }
-}
-
-
-#visual-representation {
-  margin-top: 20px;
-}
