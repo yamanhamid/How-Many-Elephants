@@ -211,3 +211,28 @@ button:hover {
 .page#equivalent .button-container button:hover {
   background-color: #553c7b; /* Darker Purple */
 }
+
+#loading-bar {
+  height: 10px;
+  background-color: #ddd;  
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+#loading-progress {
+  height: 100%;
+  background-color: #4CAF50; 
+  width: 0%; 
+  animation: loading 9s linear infinite; /* Add the loading animation */
+}
+
+@keyframes loading { 
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+
+#visual-representation {
+  margin-top: 20px;
+}
