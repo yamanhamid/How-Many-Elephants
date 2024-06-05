@@ -17,8 +17,7 @@ nav img {
   width: 120px;
   margin-bottom: 20px;
   border-radius: 50%; /* Rounded image */
-  transform: rotate(0deg);
-  animation: none;
+  animation: spin 5s linear infinite; /* Spinning animation */
 }
 
 @keyframes spin {
@@ -29,6 +28,7 @@ nav img {
     transform: rotate(360deg);
   }
 }
+
 nav button {
   background-color: #FBEAEB; /* Pastel Pink */
   border: none;
@@ -85,6 +85,33 @@ html {
   border-radius: 25px; /* Rounded corners */
   background-color: #FFFFFF; /* White background */
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+/* Adjustments for mobile */
+@media only screen and (max-width: 600px) {
+  nav {
+    width: 100%; /* Take full width on small screens */
+    height: auto; /* Auto height */
+    flex-direction: row; /* Align buttons horizontally */
+    position: static; /* Remove fixed position */
+    padding: 10px; /* Reduce padding */
+    overflow-x: auto; /* Horizontal scroll for small screens */
+    overflow-y: hidden; /* Hide vertical scroll */
+  }
+
+  nav img {
+    margin-bottom: 0; /* Remove margin */
+    margin-right: 10px; /* Add right margin */
+  }
+
+  nav button {
+    margin-bottom: 0; /* Remove margin */
+    margin-right: 10px; /* Add right margin */
+  }
+
+  .page {
+    margin-left: 0; /* Remove left margin */
+  }
 }
 
 #home {
@@ -212,3 +239,27 @@ button:hover {
   background-color: #553c7b; /* Darker Purple */
 }
 
+#loading-bar {
+  height: 10px;
+  background-color: #ddd;  
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+#loading-progress {
+  height: 100%;
+  background-color: #4CAF50; 
+  width: 0%; 
+  animation: loading 9s linear infinite; /* Add the loading animation */
+}
+
+@keyframes loading { 
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+
+#visual-representation {
+  margin-top: 20px;
+}
