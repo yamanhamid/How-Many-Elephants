@@ -167,16 +167,18 @@ function imagine() {
 function addImages(jsonData, prompt) {
   console.log(jsonData);
 
-  // Handle a possible error response from the API
   if (jsonData.error)
   {
     reqStatus.innerHTML = 'ERROR: ' + jsonData.error.message;
     return;
   }
   
-  // Parse the response object, deserialize the image data, 
-  // and attach new images to the page.
   const container = document.getElementById('image-container');
+
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+
   for (let i = 0; i < jsonData.data.length; i++) {
     let imgData = jsonData.data[i];
     let img = document.createElement('img');
