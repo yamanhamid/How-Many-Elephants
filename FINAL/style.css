@@ -22,7 +22,7 @@ nav img {
   width: 120px;
   margin-bottom: 20px;
   border-radius: 50%; /* Rounded image */
-  animation: spin 5s linear infinite; /* Spinning animation */
+
 }
 
 @keyframes spin {
@@ -48,6 +48,8 @@ nav button {
   flex-grow: 1;
   transition: background-color 0.3s;
   animation: glowing 1300ms infinite;
+  font-size: 22px;
+  font-family: 'Bubblegum Sans', sans-serif;
 }
 
 @keyframes glowing {
