@@ -134,7 +134,8 @@ const reqStatus = document.getElementById('request-status');
 const key = '';
 
 function imagine() {
-  // Fetch DOM elements
+  const logo = document.querySelector('nav img'); 
+  logo.style.animation = 'spin 3s linear infinite';   
   
   const input = document.getElementById('imagine-input').value;
 
@@ -161,6 +162,11 @@ function imagine() {
   .catch(error => {
     console.error('Error:', error);
     imageResponse.alt = "Error fetching data from the server.";
+  })
+   .finally(() => {
+    // Stop spinning the logo and reset rotation
+    logo.style.animation = 'none';
+    logo.style.transform = 'rotate(0deg)'; 
   });
 }
 
