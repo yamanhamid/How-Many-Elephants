@@ -13,6 +13,11 @@ nav {
   align-items: center;
 }
 
+body, button, input, select {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 18px; /* Larger font size */
+}
+
 nav img {
   width: 120px;
   margin-bottom: 20px;
@@ -119,15 +124,20 @@ html {
 }
 
 #reality {
-  background-color: #FFD3E0; /* Light Pink */
+  background-color: #FBEAEB; /* Pastel Pink */
 }
 
 #conversion {
-  background-color: #D8E2F0; /* Light Blue */
+  background-color: #FBEAEB; /* Pastel Pink */
 }
 
 #equivalent {
-  background-color: #C9F1FF; /* Light Cyan */
+  background-color: #FBEAEB; /* Pastel Pink */
+}
+
+/* Imagine Page Specific Styles */
+#imagine {
+  background-color: #FBEAEB; /* Pastel Pink */
 }
 
 .input-container {
@@ -185,7 +195,7 @@ input, textarea, select {
   transition: border-color 0.3s;
   white-space: pre-wrap;
   overflow: auto;
-  background-color: white;
+  background-color: #FBEAEB; /* Pastel Pink */
   margin-left: auto;
   margin-right: auto;
 }
@@ -262,4 +272,33 @@ button:hover {
 
 #visual-representation {
   margin-top: 20px;
+}
+
+/* Conversion Page Specific Styles */
+#conversion .input-container, #conversion .output-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#conversion .input-container input,
+#conversion .input-container select,
+#conversion .output-container input,
+#conversion .output-container select {
+  width: calc(100% - 40px);
+  max-width: 500px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  transition: border-color 0.3s;
+}
+
+#conversion .output-container {
+  padding-top: 20px; /* Added padding-top for better spacing */
+}
+
+.hidden {
+  display: none;
 }
