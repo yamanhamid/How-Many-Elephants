@@ -16,7 +16,7 @@ generation_config = {
 }
 
 # Initialize the GenerativeAI model
-model = genai.GenerativeModel(model_name="gemini-1.5-pro-latest", generation_config=generation_config)
+model = genai.GenerativeModel(model_name="gemini-1.5-flash", generation_config=generation_config)
 
 # Start a conversation with an empty history
 convo = model.start_chat(history=[])
@@ -79,6 +79,22 @@ def RealityCheck():
         return jsonify({'result': convo.last.text})
     except Exception as e:  
         return jsonify({'result': f"Error calling Gemini API: {str(e)}"})
+    
+
+
+@app.route('/generate_equivalent_prompt', methods=['POST'])
+def generate_equivalent_prompt():
+    data = request.get_json()
+    user_input = data.get('query')  # Ensure 'query' matches the key used in the front-end
+
+    try:
+        convo.send_message(f"Given the sentence: {user_input}. Extract the dimension and the object of the sentence. Then only respond in the format like so: [dimensions, object]. Don't add the brackets in the respond. The dimensions MUST be either of (but only one of): height, width, length, area, volume, mass, speed, duration. If these EXACT dimensions are NOT available, then respond null, null. If more than 1 dimension or object is mentioned, take out the first of each. If no dimension or object is mentioned, then respond null, null. If only the dimension or object (not both) is mentioned, then respond null, null. No other ways of responds are NOT valid, the respond must ALWAYS be comma-separated (,)")
+        return jsonify({'result': convo.last.text})
+    except Exception as e:
+        return jsonify({'error': f"Error calling Gemini API: {str(e)}"})
+
+# ... (your other routes) ...
+
 
 if __name__ == '__main__':
     app.run(debug=True)

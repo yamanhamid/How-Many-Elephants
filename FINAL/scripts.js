@@ -135,7 +135,7 @@ const key = '';
 
 function imagine() {
   const logo = document.querySelector('nav img'); 
-  logo.style.animation = 'spin 3s linear infinite';
+  logo.style.animation = 'spin 3s linear infinite';   
   
   const input = document.getElementById('imagine-input').value;
 
@@ -163,11 +163,11 @@ function imagine() {
     console.error('Error:', error);
     imageResponse.alt = "Error fetching data from the server.";
   })
-     .finally(() => {
-      // Stop spinning the logo and reset rotation
-      logo.style.animation = 'none';
-      logo.style.transform = 'rotate(0deg)'; 
-    });
+   .finally(() => {
+    // Stop spinning the logo and reset rotation
+    logo.style.animation = 'none';
+    logo.style.transform = 'rotate(0deg)'; 
+  });
 }
 
 function addImages(jsonData, prompt) {
@@ -178,13 +178,13 @@ function addImages(jsonData, prompt) {
     reqStatus.innerHTML = 'ERROR: ' + jsonData.error.message;
     return;
   }
-
+  
   const container = document.getElementById('image-container');
 
   while (container.firstChild) {
     container.removeChild(container.firstChild);
   }
-  
+
   for (let i = 0; i < jsonData.data.length; i++) {
     let imgData = jsonData.data[i];
     let img = document.createElement('img');
@@ -239,20 +239,42 @@ function switchMode(mode) {
 }
 
 
+// Function to handle the search
+function search() {
+  //document.getElementById('search-input-container').style.display = 'block';
+  document.getElementById('selection-container').style.display = 'block';
+
+  const input = document.getElementById('smart-input').value;
+  const logo = document.querySelector('nav img'); 
+  let geminiResponse;
+
+  // Start spinning the logo
+  logo.style.animation = 'spin 3s linear infinite'; 
+
+  fetch('http://127.0.0.1:5000/generate_equivalent_prompt', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query: input })  // Ensure the key here is 'query'
+  })
+  .then(response => response.json())
+  .then(data => {
+    geminiResponse = data.result;
+    searchWikidata('selection-container', 'smart-input', geminiResponse, false);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    textResponse.textContent = "Error fetching data from the server.";
+  })
+  .finally(() => {
+    // Stop spinning the logo and reset rotation
+    logo.style.animation = 'none';
+    logo.style.transform = 'rotate(0deg)'; 
+  });
+  
+}
+
 function showSecondSearch() {
   document.getElementById('search-input-container-2').style.display = 'block';
   document.getElementById('selection-container-2').style.display = 'block';
-}
-
-
-// Function to handle the search
-function search() {
-  const smartInput = document.getElementById('smart-input').value;
-  const selectionContainer = document.getElementById('selection-container');
-
-  // Perform search
-  // Put your stuff here
-  
-  // Show the selection box when search button is clicked
-  selectionContainer.style.display = 'block';
+    getSearchItems('selection-container-2', 'smart-input-2');
 }

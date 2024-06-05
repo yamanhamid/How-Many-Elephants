@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How Many Elephants</title>
   <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
   <div id="home" class="page">
@@ -112,6 +113,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How Many Elephants</title>
     <link rel="stylesheet" href="style.css">
+    <script src="scripts.js"></script>
+    <script src="linkedDataScript.js"></script>
 </head>
 <body>
     <div id="equivalent" class="page" style="display: none;">
@@ -142,6 +145,10 @@
                 <select id="selection-box-2">
                 </select>
             </div>
+            <button onclick="calcEquiv()">Enter</button>
+            <div class="equivalent-output-container">
+              <p id="equivalent-output" readonly></p>
+            </div> 
         </div>
         <div id="measurement-in-something" style="display: none;">
           <!-- First set of command line with unit dropdown -->
