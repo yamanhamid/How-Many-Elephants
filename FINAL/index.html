@@ -18,7 +18,7 @@
     <button onclick="goToPage('home')" aria-label="Go to Home">Home</button>
     <button onclick="goToPage('reality')" aria-label="Go to Reality Check">Reality Check</button>
     <button onclick="goToPage('conversion')" aria-label="Go to Conversion">Conversion</button>
-    <button onclick="goToPage('equivalent')" aria-label="Go to Equivalent">Equivalent</button>
+    <button onclick="goToPage('equivalent'); switchMode('something');" aria-label="Go to Equivalent">Equivalent To</button>
     <button onclick="goToPage('imagine')" aria-label="Go to Imagine">Imagine</button>
   </nav>
 
@@ -119,7 +119,6 @@
 <body>
     <div id="equivalent" class="page" style="display: none;">
         <div class="button-container">
-            <button onclick="switchMode('something')">Something in Something</button>
             <!-- <button onclick="switchMode('measurement')">Measurement in Something</button>  -->
         </div>
         <div id="something-in-something" style="display: none;">
