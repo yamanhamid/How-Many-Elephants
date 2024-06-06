@@ -86,7 +86,7 @@ function realityCheck() {
   logo.style.animation = 'spin 3s linear infinite'; 
   textResponse.textContent = ""; 
 
-  fetch('http://127.0.0.1:5000/realitycheck', {
+  fetch('/realitycheck', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ query: input })
